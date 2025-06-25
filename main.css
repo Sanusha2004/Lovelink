@@ -1,0 +1,40 @@
+/* Dashboard */
+.dashboard-title {
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 6px rgba(255, 105, 180, 0.4);
+}
+
+.widget-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.widget {
+  background: #fff5fb;
+  border-radius: 20px;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.widget:hover {
+  background: #ffd9ec;
+  transform: translateY(-5px);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: #f8bbd0;
+  margin-top: 1rem;
+}

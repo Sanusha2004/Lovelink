@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoveLink - Welcome</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>💖 LoveLink</h1>
+    <p class="tagline">Where friendship blossoms and love takes flight ✨</p>
+    <button id="loginBtn" class="btn">Login / Continue</button>
+  </div>
+
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <h2>Welcome Back!</h2>
+      <input type="text" id="username" placeholder="Enter username" />
+      <input type="password" id="password" placeholder="Enter password" />
+      <button id="submitLogin" class="btn">Login</button>
+      <p id="loginMessage" class="msg"></p>
+      <button id="closeModal" class="btn cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.getElementById('closeModal');
+    const submitLogin = document.getElementById('submitLogin');
+
+    loginBtn.onclick = () => {
+      loginModal.style.display = 'flex';
+    };
+
+    closeModal.onclick = () => {
+      loginModal.style.display = 'none';
+    };
+
+    submitLogin.onclick = () => {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!username || !password) {
+        showMessage("Please enter both username and password.");
+        return;
+      }
+
+      const stored = JSON.parse(localStorage.getItem(username));
+      if (stored && stored.password === password) {
+        showMessage("Welcome back, " + username + "!");
+        setTimeout(() => window.location.href = "dashboard.html", 1200);
+      } else {
+        localStorage.setItem(username, JSON.stringify({ password }));
+        showMessage("New account created. Redirecting...");
+        setTimeout(() => window.location.href = "dashboard.html", 1200);
+      }
+    };
+
+    function showMessage(msg) {
+      document.getElementById('loginMessage').textContent = msg;
+    }
+  </script>
+</body>
+</html>
